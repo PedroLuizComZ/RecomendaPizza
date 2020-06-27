@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import HandCel from "../../assets/images/iphone.png";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import { backPage } from "../../../Routes.js";
 
 import { NavLink } from "react-router-dom";

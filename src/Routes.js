@@ -5,13 +5,11 @@ import {
 	Switch,
 	Redirect,
 } from "react-router-dom";
-import Toolbar from "./app/components/toolbar/Toolbar";
-import Loader from "./app/components/loader/Loader";
+import Toolbar from "./app/components/Toolbar/Toolbar";
 
 //Paginas
 import PreCad from "./app/pages/PreCad/Index";
 import PreCadMessage from "./app/pages/PreCad/Message";
-import FirstAccess from "./app/pages/FirstAccess/Index";
 import Welcome from "./app/pages/Welcome/Index";
 import Login from "./app/pages/Login/Index";
 import Reset from "./app/pages/Login/Reset";
@@ -22,7 +20,6 @@ import Error from "./app/pages/Error/Index";
 import NotFound from "./app/pages/NotFound/Index";
 import Progress from "./app/pages/Progress/Index";
 import First from "./app/pages/First/Index";
-import Third from "./app/pages/Third/Index";
 import Indication from "./app/pages/Indication/Index";
 import VideoGallery from "./app/pages/VideoGallery/Index";
 import VideoToa from "./app/pages/VideoToa/Index";

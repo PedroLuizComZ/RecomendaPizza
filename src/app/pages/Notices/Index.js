@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { NoticesController } from "../../controllers/UserController";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 
 import { NavLink } from "react-router-dom";
 

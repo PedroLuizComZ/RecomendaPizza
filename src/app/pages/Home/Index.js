@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { Container } from "./Styles";
 
-import Loader from "../../components/loader/Loader";
 import Avatar from "@material-ui/core/Avatar";
 import Icon from "../../assets/images/person-profile.png";
 import ToggleButton from "@material-ui/lab/ToggleButton";
@@ -63,209 +62,184 @@ export default function Home(props) {
 		}
 	};
 	return (
-		<>
-			{loading ? (
-				<Loader />
-			) : (
-				<Slide direction="left" in={true} mountOnEnter unmountOnExit>
-					<Container>
-						<div className={"home-group main-content"}>
-							<div className={"profile-container"}>
-								<div className="profile-image">
-									<Avatar className={"avatar-alt"}>
-										<label
-											style={
-												profileImage
-													? { display: "block" }
-													: { display: "none" }
-											}
-											className={"image-input-file"}
-											htmlFor="selecao-arquivo"
-										></label>
-										<input
-											onChange={() => previewFile()}
-											id="selecao-arquivo"
-											type="file"
-										/>
-										<img
-											style={
-												profileImage
-													? { display: "none" }
-													: { display: "block" }
-											}
-											id={"image-profile"}
-											src={Icon}
-											alt={""}
-											className={"icon-profile"}
-											onClick={() =>
-												setProfileImage(true)
-											}
-										/>
-									</Avatar>
-								</div>
-								<div className="profile-container-data">
-									<h1 className="profile-name">{name}</h1>
-									{cnpj !== "" ? (
-										<span className="white-span">
-											CNPJ{" "}
-											{cnpj.substring(0, 2) +
-												"." +
-												cnpj.substring(2, 5) +
-												"." +
-												cnpj.substring(5, 8) +
-												"/" +
-												cnpj.substring(8, 12) +
-												"-" +
-												cnpj.substring(12, 14)}
-										</span>
-									) : (
-										<></>
-									)}
-									<span className="white-span">
-										{ddi !== "" &&
-										ddi !== null &&
-										ddd !== "" &&
-										ddd !== null &&
-										telephone !== "" &&
-										telephone !== null
-											? "+" +
-											  ddi +
-											  " (" +
-											  ddd +
-											  ") " +
-											  telephone
-											: ""}
-									</span>
-								</div>
-							</div>
-							<ToggleButtonGroup
-								value={alignment}
-								exclusive
-								onChange={handleAlignment}
-								aria-label="text alignment"
-							>
-								<ToggleButton
-									className={"multiselect-btn"}
-									value="0"
-									aria-label="right aligned"
-								>
-									<img
-										className={"toggle-button-icon"}
-										src={PerfilEmpresarialLogo}
-										alt={""}
-									/>
-									{empresarialFull ? (
-										possuiMei === "sim" ? (
-											<img
-												className={"check-icon"}
-												src={Check}
-												alt={""}
-											/>
-										) : (
-											<img
-												className={"check-icon-alert"}
-												src={Alert}
-												alt={""}
-											/>
-										)
-									) : (
-										<></>
-									)}
-								</ToggleButton>
-								<ToggleButton
-									className={"multiselect-btn"}
-									value="1"
-									aria-label="left aligned"
-								>
-									<img
-										className={"toggle-button-icon"}
-										src={PerfilAtentimentoLogo}
-										alt={""}
-									/>
-									{atendimentoFull ? (
-										<img
-											className={"check-icon"}
-											src={Check}
-											alt={""}
-										/>
-									) : (
-										<></>
-									)}
-								</ToggleButton>
-								<ToggleButton
-									className={"multiselect-btn"}
-									value="2"
-									aria-label="centered"
-								>
-									<img
-										className={"toggle-button-icon"}
-										src={PerfilProfissionalLogo}
-										alt={""}
-									/>
-									{profissionalFull ? (
-										<img
-											className={"check-icon"}
-											src={Check}
-											alt={""}
-										/>
-									) : (
-										<></>
-									)}
-								</ToggleButton>
-							</ToggleButtonGroup>
-							{tab === "0" ? <Empresarial /> : <></>}
-							{tab === "1" ? <Atendimento /> : <></>}
-							{tab === "2" ? <Profissional /> : <></>}
-						</div>
-						<div
-							id="ios-container"
-							onClick={() =>
-								(document.getElementById(
-									"ios-container"
-								).style.display = "none")
-							}
-							className={"ios-message"}
-							style={{ display: "none", top: "0 !important" }}
-						>
-							<section>
+		<Slide direction="left" in={true} mountOnEnter unmountOnExit>
+			<Container>
+				<div className={"home-group main-content"}>
+					<div className={"profile-container"}>
+						<div className="profile-image">
+							<Avatar className={"avatar-alt"}>
+								<label
+									style={
+										profileImage
+											? { display: "block" }
+											: { display: "none" }
+									}
+									className={"image-input-file"}
+									htmlFor="selecao-arquivo"
+								></label>
+								<input
+									onChange={() => previewFile()}
+									id="selecao-arquivo"
+									type="file"
+								/>
 								<img
-									className={"img-logo"}
-									src={Logo}
+									style={
+										profileImage
+											? { display: "none" }
+											: { display: "block" }
+									}
+									id={"image-profile"}
+									src={Icon}
+									alt={""}
+									className={"icon-profile"}
+									onClick={() => setProfileImage(true)}
+								/>
+							</Avatar>
+						</div>
+						<div className="profile-container-data">
+							<h1 className="profile-name">{name}</h1>
+							{cnpj !== "" ? (
+								<span className="white-span">
+									CNPJ{" "}
+									{cnpj.substring(0, 2) +
+										"." +
+										cnpj.substring(2, 5) +
+										"." +
+										cnpj.substring(5, 8) +
+										"/" +
+										cnpj.substring(8, 12) +
+										"-" +
+										cnpj.substring(12, 14)}
+								</span>
+							) : (
+								<></>
+							)}
+							<span className="white-span">
+								{ddi !== "" &&
+								ddi !== null &&
+								ddd !== "" &&
+								ddd !== null &&
+								telephone !== "" &&
+								telephone !== null
+									? "+" + ddi + " (" + ddd + ") " + telephone
+									: ""}
+							</span>
+						</div>
+					</div>
+					<ToggleButtonGroup
+						value={alignment}
+						exclusive
+						onChange={handleAlignment}
+						aria-label="text alignment"
+					>
+						<ToggleButton
+							className={"multiselect-btn"}
+							value="0"
+							aria-label="right aligned"
+						>
+							<img
+								className={"toggle-button-icon"}
+								src={PerfilEmpresarialLogo}
+								alt={""}
+							/>
+							{empresarialFull ? (
+								possuiMei === "sim" ? (
+									<img
+										className={"check-icon"}
+										src={Check}
+										alt={""}
+									/>
+								) : (
+									<img
+										className={"check-icon-alert"}
+										src={Alert}
+										alt={""}
+									/>
+								)
+							) : (
+								<></>
+							)}
+						</ToggleButton>
+						<ToggleButton
+							className={"multiselect-btn"}
+							value="1"
+							aria-label="left aligned"
+						>
+							<img
+								className={"toggle-button-icon"}
+								src={PerfilAtentimentoLogo}
+								alt={""}
+							/>
+							{atendimentoFull ? (
+								<img
+									className={"check-icon"}
+									src={Check}
 									alt={""}
 								/>
-								<p>
-									Para instalar este app : Clique no botão
-									abaixo e então escolha a opção "Adicionar á
-									Tela Início"
-								</p>
-							</section>
-							<img
-								className={"times-image"}
-								src={Close}
-								alt={""}
-							/>
-							<div></div>
-						</div>
-						<div
-							style={{ display: "none" }}
-							className={"ad2hs-prompt"}
+							) : (
+								<></>
+							)}
+						</ToggleButton>
+						<ToggleButton
+							className={"multiselect-btn"}
+							value="2"
+							aria-label="centered"
 						>
-							<p className={"install-btn"}>
-								Clique aqui para instalar o aplicativo
-							</p>
 							<img
-								style={{ display: "none" }}
-								className={"prompt-img"}
-								onClick={(event) => handleClick(event)}
-								src={Close}
+								className={"toggle-button-icon"}
+								src={PerfilProfissionalLogo}
 								alt={""}
 							/>
-							<div></div>
-						</div>
-					</Container>
-				</Slide>
-			)}
-		</>
+							{profissionalFull ? (
+								<img
+									className={"check-icon"}
+									src={Check}
+									alt={""}
+								/>
+							) : (
+								<></>
+							)}
+						</ToggleButton>
+					</ToggleButtonGroup>
+					{tab === "0" ? <Empresarial /> : <></>}
+					{tab === "1" ? <Atendimento /> : <></>}
+					{tab === "2" ? <Profissional /> : <></>}
+				</div>
+				<div
+					id="ios-container"
+					onClick={() =>
+						(document.getElementById(
+							"ios-container"
+						).style.display = "none")
+					}
+					className={"ios-message"}
+					style={{ display: "none", top: "0 !important" }}
+				>
+					<section>
+						<img className={"img-logo"} src={Logo} alt={""} />
+						<p>
+							Para instalar este app : Clique no botão abaixo e
+							então escolha a opção "Adicionar á Tela Início"
+						</p>
+					</section>
+					<img className={"times-image"} src={Close} alt={""} />
+					<div></div>
+				</div>
+				<div style={{ display: "none" }} className={"ad2hs-prompt"}>
+					<p className={"install-btn"}>
+						Clique aqui para instalar o aplicativo
+					</p>
+					<img
+						style={{ display: "none" }}
+						className={"prompt-img"}
+						onClick={(event) => handleClick(event)}
+						src={Close}
+						alt={""}
+					/>
+					<div></div>
+				</div>
+			</Container>
+		</Slide>
 	);
 
 	async function handleStart(idUser) {

@@ -16,7 +16,7 @@ import {
 	ConsultCityController,
 } from "../../../controllers/AtendenceController";
 import { UserInfoController } from "../../../controllers/UserController";
-import Loader from "../../../components/loader/Loader";
+import Loader from "../../../components/Loader/Loader";
 import useDebounce from "./Debounce";
 
 const useStyles = makeStyles({

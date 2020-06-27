@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import MaskedInput from "react-text-mask";
 import Slide from "@material-ui/core/Slide";
 import { ConsultCityController } from "../../../controllers/AtendenceController";
-import Loader from "../../../components/loader/Loader";
+import Loader from "../../../components/Loader/Loader";
 import useDebounce from "./Debounce";
 
 const useStyles = makeStyles({

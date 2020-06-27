@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import AddToHomeScreenIcon from "@material-ui/icons/AddToHomeScreen";
 import Avatar from "@material-ui/core/Avatar";

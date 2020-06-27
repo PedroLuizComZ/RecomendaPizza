@@ -23,10 +23,10 @@ export default class ScrollToBottom extends Component {
 		return (
 			<a
 				style={scrollToBottomStyle}
-				className={"home-equal-size both-buttons"}
+				className={" both-buttons"}
 				onClick={() => this.scrollToBottom()}
 			>
-				Conheça Mais
+				Recomendação do Chef
 			</a>
 		);
 	}

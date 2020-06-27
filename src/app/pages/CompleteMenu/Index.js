@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Container } from "./Styles";
 
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import Avatar from "@material-ui/core/Avatar";
 import Icon from "../../assets/images/person-profile.png";
 import { NavLink } from "react-router-dom";

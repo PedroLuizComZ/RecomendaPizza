@@ -91,11 +91,6 @@ function First(props) {
 						style={ShowWindowDimensions()}
 					>
 						<div className="mask">
-							<img
-								className="side-icons left-icon"
-								src={LeftSquares}
-								alt=""
-							/>
 							<div className="side-button left-button">
 								<ScrollToBottom
 									height={ShowWindowDimensions("height")}
@@ -103,27 +98,17 @@ function First(props) {
 							</div>
 						</div>
 					</div>
-					<div className="banner-title">
-						<h1 style={ShowWindowDimensions("max-width")}>
-							Muito Prazer, somos a <b>MMS!</b>
-						</h1>
-					</div>
 					<div
 						className="both-sides right-side"
 						style={ShowWindowDimensions()}
 					>
 						<div className="mask">
-							<img
-								className="side-icons right-icon"
-								src={RightSquares}
-								alt={""}
-							/>
 							<div className="side-button right-button">
 								<a
 									className={"both-buttons"}
 									href="/#/seja-um-parceiro"
 								>
-									Quero montar móveis
+									Quero montar minha Pizza
 								</a>
 							</div>
 						</div>

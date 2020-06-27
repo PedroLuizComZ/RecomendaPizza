@@ -7,7 +7,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import { FaqController } from "../../controllers/UserController";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 

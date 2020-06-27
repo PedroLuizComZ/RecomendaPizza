@@ -6,7 +6,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import AddToHomeScreenIcon from "@material-ui/icons/AddToHomeScreen";
 import DoneAllIcon from "@material-ui/icons/DoneAll";
 import { TrailController } from "../../controllers/UserController";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import { backPage } from "../../../Routes.js";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Avatar from "@material-ui/core/Avatar";

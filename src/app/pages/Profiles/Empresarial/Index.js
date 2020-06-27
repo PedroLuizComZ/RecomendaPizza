@@ -5,7 +5,7 @@ import EmpresarialDetail from "./Detail";
 
 import MobileStepper from "@material-ui/core/MobileStepper";
 import { makeStyles } from "@material-ui/core/styles";
-import Loader from "../../../components/loader/Loader";
+import Loader from "../../../components/Loader/Loader";
 import Slide from "@material-ui/core/Slide";
 import MaskedInput from "react-text-mask";
 import { BusinessController } from "../../../controllers/BusinessController";

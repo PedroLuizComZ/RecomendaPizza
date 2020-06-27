@@ -8,7 +8,7 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import Switch from "react-switch";
 import { makeStyles } from "@material-ui/core/styles";
 import Slide from "@material-ui/core/Slide";
-import Loader from "../../../components/loader/Loader";
+import Loader from "../../../components/Loader/Loader";
 import {
 	ProfessionalController,
 	PartnerController,

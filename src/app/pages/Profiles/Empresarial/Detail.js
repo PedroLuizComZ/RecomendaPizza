@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "./Styles";
 
 import MobileStepper from "@material-ui/core/MobileStepper";
-import Loader from "../../../components/loader/Loader";
+import Loader from "../../../components/Loader/Loader";
 import MaskedInput from "react-text-mask";
 
 export default function EmpresarialDetail(props) {

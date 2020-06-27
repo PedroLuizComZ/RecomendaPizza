@@ -639,7 +639,7 @@ export default function TemporaryDrawer(props) {
 							alt={"Logo-Premium"}
 							src={LogoPizza}
 						/>
-						<h1>Pede Pizza</h1>
+						<h1 className={"toolbar-logo-text"}>Recomenda Pizza</h1>
 					</NavLink>
 
 					{navList()}

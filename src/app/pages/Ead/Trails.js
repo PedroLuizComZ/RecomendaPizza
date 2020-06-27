@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { TrailsController } from "../../controllers/UserController";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Avatar from "@material-ui/core/Avatar";
 import Icon from "../../assets/images/person-profile.png";
