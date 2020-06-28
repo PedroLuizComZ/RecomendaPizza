@@ -1,44 +1,14 @@
 import React, { useEffect, useState } from "react";
-import {
-	HashRouter as Router,
-	Route,
-	Switch,
-	Redirect,
-} from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Toolbar from "./app/components/Toolbar/Toolbar";
 
 //Paginas
-import PreCad from "./app/pages/PreCad/Index";
-import PreCadMessage from "./app/pages/PreCad/Message";
-import Welcome from "./app/pages/Welcome/Index";
-import Login from "./app/pages/Login/Index";
-import Reset from "./app/pages/Login/Reset";
-import MessagePassword from "./app/pages/Login/Message";
-import ResetPassword from "./app/pages/ResetPassword/Index";
 import Home from "./app/pages/Home/Index";
-import Error from "./app/pages/Error/Index";
+import SizePizza from "./app/pages/SizePizza/Index";
+import FlavorPizza from "./app/pages/FlavorPizza/Index";
+import ExtraPizza from "./app/pages/ExtraPizza/Index";
+import Summary from "./app/pages/Summary/Index";
 import NotFound from "./app/pages/NotFound/Index";
-import Progress from "./app/pages/Progress/Index";
-import First from "./app/pages/First/Index";
-import Indication from "./app/pages/Indication/Index";
-import VideoGallery from "./app/pages/VideoGallery/Index";
-import VideoToa from "./app/pages/VideoToa/Index";
-import NoticesHub from "./app/pages/NoticesHub/Index";
-import Faq from "./app/pages/Faq/Index";
-import Notices from "./app/pages/Notices/Index";
-import Notice from "./app/pages/Notices/Detail";
-import CookiesTerms from "./app/pages/CookiesTerms/Index";
-import PrivacyPolicy from "./app/pages/PrivacyPolicy/Index";
-import TermOfUse from "./app/pages/TermOfUse/Index";
-import Trails from "./app/pages/Ead/Trails";
-import Trail from "./app/pages/Ead/Trail";
-import Content from "./app/pages/Ead/Content";
-import Simulator from "./app/pages/Ead/Simulator";
-import AcceptContract from "./app/pages/AcceptContract/Index";
-import CompleteMenu from "./app/pages/CompleteMenu/Index";
-
-//Controllers
-import { AuthController } from "./app/controllers/UserController";
 
 function Routes(props) {
 	const [loading, setLoading] = useState(true);
@@ -53,7 +23,31 @@ function Routes(props) {
 				<Route
 					exact
 					path="/"
-					component={(props) => <First {...props} />}
+					component={(props) => <Home {...props} />}
+				/>
+
+				<Route
+					exact
+					path="/tamanho-pizza"
+					component={(props) => <SizePizza {...props} />}
+				/>
+
+				<Route
+					exact
+					path="/sabor-pizza"
+					component={(props) => <FlavorPizza {...props} />}
+				/>
+
+				<Route
+					exact
+					path="/extra-pizza"
+					component={(props) => <ExtraPizza {...props} />}
+				/>
+
+				<Route
+					exact
+					path="/resumo-pizza"
+					component={(props) => <Summary {...props} />}
 				/>
 
 				{/* Pagina não encontrada */}
