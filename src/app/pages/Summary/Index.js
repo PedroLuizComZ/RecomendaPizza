@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// Images
-import SmallPizza from "../../assets/images/welcome-steps/small-pizza.svg";
-import NormalPizza from "../../assets/images/welcome-steps/normal-pizza.svg";
-import BigPizza from "../../assets/images/welcome-steps/big-pizza.svg";
-
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import MobileStepper from "@material-ui/core/MobileStepper";
-import Paper from "@material-ui/core/Paper";
-import SwipeableViews from "react-swipeable-views";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { NavLink } from "react-router-dom";
 
@@ -44,122 +36,68 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Summary() {
-	// Similar ao componentDidMount e componentDidUpdate:
-	useEffect(() => {}, []);
+	const [size, setSize] = useState("");
+	const [sizeNumber, setSizeNumber] = useState("");
+	const [flavors, setFlavors] = useState("");
+	const [borda, setBorda] = useState("");
+	const [obs, setObs] = useState("");
+
+	useEffect(() => {
+		loadData();
+	}, []);
 
 	const classes = useStyles();
-	const theme = useTheme();
-	const [activeStep, setActiveStep] = useState(0);
-	const maxSteps = 3;
-
-	const handleStepChange = (step) => {
-		setActiveStep(step);
-	};
 
 	return (
 		<Slide direction="left" in={true} mountOnEnter unmountOnExit>
 			<div className={classes.root + " pizza-container"}>
-				<h1 className={"question-header"}>
-					Deseja acrescentar algo extra?
-				</h1>
-				<Paper square elevation={0} className={classes.header}></Paper>
-				<SwipeableViews
-					axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-					index={activeStep}
-					enableMouseEvents
-					className={"main-content high-level"}
-					onChangeIndex={handleStepChange}
-				>
-					<div key={"1"} className="content-container-home-parent">
-						<div className={"content-container-home"}>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>Brotinho</h2>
-							</div>
-							<div className={"diamant-container-welcome"}>
-								<img
-									className={"icon-welcome-size"}
-									src={SmallPizza}
-									alt={""}
-								/>
-							</div>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>4 Pedaços</h2>
-							</div>
-						</div>
-					</div>
-					<div key={"2"} className="content-container-home-parent">
-						<div className={"content-container-home"}>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>Grande</h2>
-							</div>
-							<div className={"diamant-container-welcome"}>
-								<img
-									className={"icon-welcome-size"}
-									src={NormalPizza}
-									alt={""}
-								/>
-							</div>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>6 Pedaços</h2>
-							</div>
-						</div>
-					</div>
-					<div key={"3"} className="content-container-home-parent">
-						<div className={"content-container-home"}>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>Família </h2>
-							</div>
-							<div className={"diamant-container-welcome"}>
-								<img
-									className={"icon-welcome-size"}
-									src={BigPizza}
-									alt={""}
-								/>
-							</div>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>8 Pedaços</h2>
-							</div>
-						</div>
-					</div>
-				</SwipeableViews>
-				<MobileStepper
-					steps={maxSteps}
-					position="static"
-					variant="dots"
-					activeStep={activeStep}
-					className={"main-content"}
-					onClick={(e) => changeTabByDot(e.target)}
-				/>
+				<h1 className={"question-header"}>Confirme seu pedido</h1>
+				<div className="extra-container">
+					<label className={"extra-text"}>Tamanho</label>
+					<span>
+						{size} ({sizeNumber} pedaços)
+					</span>
+				</div>
+				<div className="extra-container">
+					<label className={"extra-text"}>Ingredientes</label>
+					<span>{flavors}</span>
+				</div>
+				<div className="extra-container">
+					<label className={"extra-text"}>Borda</label>
+					<span>{borda}</span>
+				</div>
+				<div className="extra-container">
+					<label className={"extra-text"}>Observação</label>
+					<span>{obs}</span>
+				</div>
 				<footer className={"footer-default"}>
-					<NavLink to={"sabor-pizza"} className={"go-forward-button"}>
+					<NavLink to={"extra-pizza"} className={"go-forward-button"}>
 						Voltar
 					</NavLink>
 					<NavLink
-						to={"resumo-pizza"}
+						to={"pizza-finalizada"}
 						className={"go-forward-button"}
 					>
-						Avançar
+						Confirmar
 					</NavLink>
 				</footer>
 			</div>
 		</Slide>
 	);
 
-	function changeTabByDot(element) {
-		if (element.classList[0] === "MuiMobileStepper-dot") {
-			document
-				.getElementsByClassName("MuiMobileStepper-dotActive")[0]
-				.classList.remove("MuiMobileStepper-dotActive");
-			element.classList.add("MuiMobileStepper-dotActive");
-			let dotsSize = document.getElementsByClassName(
-				"MuiMobileStepper-dotActive"
-			)[0].parentElement.childNodes;
-			for (let index = 0; index < dotsSize.length; index++) {
-				if (dotsSize[index].classList.length === 2) {
-					setActiveStep(index);
-				}
-			}
-		}
+	function loadData() {
+		const PizzaData = JSON.parse(localStorage.getItem("PizzaData"));
+		setSize(PizzaData.size.name);
+		setSizeNumber(PizzaData.size.size);
+
+		let flavors = "";
+		PizzaData.flavors.forEach((element) => {
+			flavors = flavors + element.name + ", ";
+		});
+		flavors = flavors.substring(0, flavors.length - 2);
+		setFlavors(flavors);
+		setBorda(PizzaData.extra.borda);
+		setObs(PizzaData.extra.obs);
 	}
 }
 

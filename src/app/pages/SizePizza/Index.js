@@ -124,7 +124,11 @@ function ExtraPizza() {
 
 				<footer className={"footer-default"}>
 					<div></div>
-					<NavLink to={"sabor-pizza"} className={"go-forward-button"}>
+					<NavLink
+						onClick={() => handleClick()}
+						to={"sabor-pizza"}
+						className={"go-forward-button"}
+					>
 						Avançar
 					</NavLink>
 				</footer>
@@ -140,6 +144,29 @@ function ExtraPizza() {
 		});
 		setTypes(typesArray);
 		setLoading(false);
+	}
+
+	function handleClick() {
+		switch (activeStep) {
+			case 0:
+				localStorage.setItem(
+					"PizzaData",
+					JSON.stringify({ size: { name: "Brotinho", size: 4 } })
+				);
+				break;
+			case 1:
+				localStorage.setItem(
+					"PizzaData",
+					JSON.stringify({ size: { name: "Grande", size: 6 } })
+				);
+				break;
+			default:
+				localStorage.setItem(
+					"PizzaData",
+					JSON.stringify({ size: { name: "Família", size: 8 } })
+				);
+				break;
+		}
 	}
 
 	function changeTabByDot(element) {

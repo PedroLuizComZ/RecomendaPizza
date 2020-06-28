@@ -53,9 +53,9 @@ function FlavorPizza() {
 	}, []);
 
 	const classes = useStyles();
-	const [checked, setChecked] = React.useState([]);
-	const [left, setLeft] = React.useState([]);
-	const [right, setRight] = React.useState([]);
+	const [checked, setChecked] = useState([]);
+	const [left, setLeft] = useState([]);
+	const [right, setRight] = useState([]);
 
 	const leftChecked = intersection(checked, left);
 	const rightChecked = intersection(checked, right);
@@ -207,7 +207,11 @@ function FlavorPizza() {
 					>
 						Voltar
 					</NavLink>
-					<NavLink to={"extra-pizza"} className={"go-forward-button"}>
+					<NavLink
+						onClick={() => handleClick()}
+						to={"extra-pizza"}
+						className={"go-forward-button"}
+					>
 						Avançar
 					</NavLink>
 				</footer>
@@ -231,6 +235,18 @@ function FlavorPizza() {
 		setLeft(available);
 		setRight(selected);
 		setLoading(false);
+	}
+
+	function handleClick() {
+		let flavors = [];
+		right.forEach((element) => {
+			flavors.push({ name: element });
+		});
+		let PizzaData = JSON.parse(localStorage.getItem("PizzaData"));
+		console.log(PizzaData);
+		console.log(PizzaData.flavors);
+		PizzaData.flavors = flavors;
+		localStorage.setItem("PizzaData", JSON.stringify(PizzaData));
 	}
 }
 

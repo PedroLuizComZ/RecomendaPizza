@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Toolbar from "./app/components/Toolbar/Toolbar";
 
@@ -8,11 +8,10 @@ import SizePizza from "./app/pages/SizePizza/Index";
 import FlavorPizza from "./app/pages/FlavorPizza/Index";
 import ExtraPizza from "./app/pages/ExtraPizza/Index";
 import Summary from "./app/pages/Summary/Index";
+import Success from "./app/pages/Success/Index";
 import NotFound from "./app/pages/NotFound/Index";
 
 function Routes(props) {
-	const [loading, setLoading] = useState(true);
-
 	useEffect(() => {}, []);
 
 	return (
@@ -48,6 +47,12 @@ function Routes(props) {
 					exact
 					path="/resumo-pizza"
 					component={(props) => <Summary {...props} />}
+				/>
+
+				<Route
+					exact
+					path="/pizza-finalizada"
+					component={(props) => <Success {...props} />}
 				/>
 
 				{/* Pagina não encontrada */}

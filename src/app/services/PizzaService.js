@@ -72,3 +72,41 @@ export const FlavorsPizzaRequest = async () => {
 		});
 	});
 };
+
+export const RecomendedPizzaRequest = async () => {
+	return new Promise(async function (resolve, reject) {
+		resolve({
+			size: {
+				name: "Brotinho",
+				size: 4,
+			},
+			flavors: [
+				{
+					name: "Molho",
+				},
+				{
+					name: "Queijo",
+				},
+				{
+					name: "Tomate",
+				},
+				{
+					name: "Ervilha",
+				},
+				{
+					name: "Presunto",
+				},
+			],
+			extra: {
+				borda: "Sim",
+				obs: "",
+			},
+		});
+	});
+};
+
+export const PointsPizzaRequest = async () => {
+	return new Promise(async function (resolve, reject) {
+		resolve({ points: 50 });
+	});
+};

@@ -21,31 +21,6 @@ export const Container = styled.div`
 		height: 1em;
 	}
 
-	.MuiAutocomplete-root > .MuiFormControl-root {
-		width: 100%;
-	}
-
-	.MuiMobileStepper-dot:last-child {
-		background: rgba(0, 0, 0, 0.26);
-	}
-
-	.table-container {
-		display: flex;
-		justify-content: center;
-	}
-
-	tr{
-		background: rgba(255,255,255,0.12);
-	}
-
-	td{
-		padding: 4px 20px;
-	}
-
-	th{
-		font-weight: normal;
-	}
-
 	footer {
 		bottom: 0;
 	}

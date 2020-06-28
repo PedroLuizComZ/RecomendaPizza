@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 import { Container } from "./Styles";
-import LogoPremium from "../../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
 import Slide from "@material-ui/core/Slide";
 

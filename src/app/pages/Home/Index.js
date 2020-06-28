@@ -1,12 +1,16 @@
 import React, { useLayoutEffect, useEffect, useState } from "react";
 
 import { NavLink } from "react-router-dom";
+import {
+	RecomendedPizzaController,
+	PointsPizzaController,
+} from "../../controllers/PizzaController";
 
 import Slide from "@material-ui/core/Slide";
 
 const mobileHeight = window.innerHeight;
 
-function Home() {
+function Home(props) {
 	useEffect(() => {}, []);
 
 	function useWindowSize() {
@@ -82,13 +86,13 @@ function Home() {
 						style={ShowWindowDimensions()}
 					>
 						<div className="mask">
-							<div className="side-button left-button">
-								<NavLink
-									to={"tamanho-pizza"}
+							<div className="side-button right-button">
+								<div
+									onClick={() => handleClick()}
 									className={"both-buttons"}
 								>
 									Recomendação do Chef
-								</NavLink>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -100,6 +104,7 @@ function Home() {
 							<div className="side-button right-button">
 								<NavLink
 									to={"tamanho-pizza"}
+									onClick={() => handleClickMakePizza()}
 									className={"both-buttons"}
 								>
 									Quero montar minha Pizza
@@ -111,6 +116,19 @@ function Home() {
 			</div>
 		</Slide>
 	);
+
+	async function handleClick() {
+		const responseRecomended = await RecomendedPizzaController();
+		localStorage.setItem("PizzaData", JSON.stringify(responseRecomended));
+		const responsePoints = await PointsPizzaController();
+		localStorage.setItem("PointsPizza", JSON.stringify(responsePoints));
+		props.history.push("resumo-pizza");
+	}
+
+	function handleClickMakePizza() {
+		localStorage.removeItem("PizzaData");
+		localStorage.removeItem("PointsPizza");
+	}
 }
 
 export default Home;

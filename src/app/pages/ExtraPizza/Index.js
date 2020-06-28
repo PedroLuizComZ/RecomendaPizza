@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-// Images
-import SmallPizza from "../../assets/images/welcome-steps/small-pizza.svg";
-import NormalPizza from "../../assets/images/welcome-steps/normal-pizza.svg";
-import BigPizza from "../../assets/images/welcome-steps/big-pizza.svg";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
 
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import MobileStepper from "@material-ui/core/MobileStepper";
-import Paper from "@material-ui/core/Paper";
-import SwipeableViews from "react-swipeable-views";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { NavLink } from "react-router-dom";
 
@@ -48,12 +44,11 @@ function SizePizza() {
 	useEffect(() => {}, []);
 
 	const classes = useStyles();
-	const theme = useTheme();
-	const [activeStep, setActiveStep] = useState(0);
-	const maxSteps = 3;
 
-	const handleStepChange = (step) => {
-		setActiveStep(step);
+	const [borda, setBorda] = React.useState(false);
+
+	const handleChange = (event) => {
+		setBorda(event.target.value);
 	};
 
 	return (
@@ -62,79 +57,32 @@ function SizePizza() {
 				<h1 className={"question-header"}>
 					Deseja acrescentar algo extra?
 				</h1>
-				<Paper square elevation={0} className={classes.header}></Paper>
-				<SwipeableViews
-					axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-					index={activeStep}
-					enableMouseEvents
-					className={"main-content high-level"}
-					onChangeIndex={handleStepChange}
-				>
-					<div key={"1"} className="content-container-home-parent">
-						<div className={"content-container-home"}>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>Brotinho</h2>
-							</div>
-							<div className={"diamant-container-welcome"}>
-								<img
-									className={"icon-welcome-size"}
-									src={SmallPizza}
-									alt={""}
-								/>
-							</div>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>4 Pedaços</h2>
-							</div>
-						</div>
-					</div>
-					<div key={"2"} className="content-container-home-parent">
-						<div className={"content-container-home"}>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>Grande</h2>
-							</div>
-							<div className={"diamant-container-welcome"}>
-								<img
-									className={"icon-welcome-size"}
-									src={NormalPizza}
-									alt={""}
-								/>
-							</div>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>6 Pedaços</h2>
-							</div>
-						</div>
-					</div>
-					<div key={"3"} className="content-container-home-parent">
-						<div className={"content-container-home"}>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>Família </h2>
-							</div>
-							<div className={"diamant-container-welcome"}>
-								<img
-									className={"icon-welcome-size"}
-									src={BigPizza}
-									alt={""}
-								/>
-							</div>
-							<div className={"title-container"}>
-								<h2 className={"answer-text"}>8 Pedaços</h2>
-							</div>
-						</div>
-					</div>
-				</SwipeableViews>
-				<MobileStepper
-					steps={maxSteps}
-					position="static"
-					variant="dots"
-					activeStep={activeStep}
-					className={"main-content"}
-					onClick={(e) => changeTabByDot(e.target)}
-				/>
+				<div className="extra-container">
+					<label className={"extra-text"}>
+						Deseja acrescentar Borda ?
+					</label>
+					<Select id="borda" value={borda} onChange={handleChange}>
+						<MenuItem value={true}>Sim</MenuItem>
+						<MenuItem value={false}>Não</MenuItem>
+					</Select>
+				</div>
+				<div className="extra-container">
+					<label className={"extra-text"}>
+						Alguma observação á fazer?
+					</label>
+					<TextField
+						id="observation"
+						multiline
+						rows={5}
+						variant="outlined"
+					/>
+				</div>
 				<footer className={"footer-default"}>
 					<NavLink to={"sabor-pizza"} className={"go-forward-button"}>
 						Voltar
 					</NavLink>
 					<NavLink
+						onClick={() => handleClick()}
 						to={"resumo-pizza"}
 						className={"go-forward-button"}
 					>
@@ -145,21 +93,13 @@ function SizePizza() {
 		</Slide>
 	);
 
-	function changeTabByDot(element) {
-		if (element.classList[0] === "MuiMobileStepper-dot") {
-			document
-				.getElementsByClassName("MuiMobileStepper-dotActive")[0]
-				.classList.remove("MuiMobileStepper-dotActive");
-			element.classList.add("MuiMobileStepper-dotActive");
-			let dotsSize = document.getElementsByClassName(
-				"MuiMobileStepper-dotActive"
-			)[0].parentElement.childNodes;
-			for (let index = 0; index < dotsSize.length; index++) {
-				if (dotsSize[index].classList.length === 2) {
-					setActiveStep(index);
-				}
-			}
-		}
+	function handleClick() {
+		let PizzaData = JSON.parse(localStorage.getItem("PizzaData"));
+		PizzaData.extra = {
+			borda: borda ? "Sim" : "Não",
+			obs: document.getElementById("observation").value,
+		};
+		localStorage.setItem("PizzaData", JSON.stringify(PizzaData));
 	}
 }
 
